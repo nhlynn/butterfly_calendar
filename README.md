@@ -72,8 +72,10 @@ You can use following function
             binding.myCalendar.addSingleOffDay(cal.time)
 	
 	
-	
-binding.myCalendar.addEventWithIcon(calendar.time,R.drawable.ic_travel)
+
+//add event
+
+  binding.myCalendar.addEventWithIcon(calendar.time,R.drawable.ic_travel)
 	
 	
 	
