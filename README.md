@@ -22,6 +22,8 @@ Step 2. Add the dependency
 
 
 You can use following function 
+
 -custom event with icon
 -single off day
 -multiple off day
+}
