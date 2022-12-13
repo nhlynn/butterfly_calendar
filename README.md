@@ -30,6 +30,15 @@ You can use following function
 -multiple off day
 
 
+<com.nylynn.butterfly_calendar.ButterflyCalendar
+        android:id="@+id/my_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 //Date Click Listener
 
         binding.myCalendar.setOnDateClickListener(object : OnDateClickListener{
