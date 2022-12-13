@@ -30,7 +30,7 @@ You can use following function
 -multiple off day
 
 
-<com.nylynn.butterfly_calendar.ButterflyCalendar
+    <com.nylynn.butterfly_calendar.ButterflyCalendar
         android:id="@+id/my_calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
