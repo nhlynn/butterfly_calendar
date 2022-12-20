@@ -17,6 +17,8 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Ada
     private var dateList = arrayListOf<DatesVO>()
     private var eventList = arrayListOf<EventVO>()
     private var offDayList = arrayListOf<Date>()
+    private var mSuperSunday=false
+    private var mWeekend=false
 
     private val c: Calendar = Calendar.getInstance()
     private val todayDate: Date = c.time
@@ -46,7 +48,16 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Ada
         }
 
         if (dateList[position].date != null) {
-            if (dayOfWeekFormat.format(dateList[position].date!!) == "Saturday" ||
+            if (mWeekend && (dayOfWeekFormat.format(dateList[position].date!!) == "Saturday" ||
+                        dayOfWeekFormat.format(dateList[position].date!!) == "Sunday")
+            ) {
+                root.tvMonthDate.setTextColor(
+                    AppCompatResources.getColorStateList(
+                        root.tvMonthDate.context,
+                        R.color.red
+                    )
+                )
+            } else if (mSuperSunday &&
                 dayOfWeekFormat.format(dateList[position].date!!) == "Sunday"
             ) {
                 root.tvMonthDate.setTextColor(
@@ -115,5 +126,13 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Ada
 
     fun setMultipleOffDay(event: ArrayList<Date>) {
         this.offDayList = event
+    }
+
+    fun setSuperSundayOff(){
+        this.mSuperSunday=true
+    }
+
+    fun setWeekendOff(){
+        this.mWeekend=true
     }
 }

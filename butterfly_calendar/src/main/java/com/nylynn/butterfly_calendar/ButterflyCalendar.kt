@@ -152,6 +152,14 @@ class ButterflyCalendar constructor(
         calendarAdapter.setMultipleOffDay(offDayList)
     }
 
+    fun setSuperSundayOff(){
+        calendarAdapter.setSuperSundayOff()
+    }
+
+    fun setWeekendOff(){
+        calendarAdapter.setWeekendOff()
+    }
+
     fun setOnDateClickListener(onDateClickListener: OnDateClickListener) {
         this.onDateClickListener = onDateClickListener
     }

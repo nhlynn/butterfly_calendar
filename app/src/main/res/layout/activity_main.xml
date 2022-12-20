@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <com.nylynn.butterfly_calendar.ButterflyCalendar
+        android:id="@+id/lynn_cal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
