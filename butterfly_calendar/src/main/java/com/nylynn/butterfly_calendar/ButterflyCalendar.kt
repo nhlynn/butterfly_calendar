@@ -1,7 +1,6 @@
 package com.nylynn.butterfly_calendar
 
 import android.content.Context
-import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +16,7 @@ import java.util.*
 
 class ButterflyCalendar constructor(
     context: Context,
-    attrs: AttributeSet?
+    attrs: AttributeSet
 ) : LinearLayout(context, attrs), OnDateClickListener {
     private var mainCalendar: Calendar = Calendar.getInstance()
     private lateinit var calendarAdapter: CalendarAdapter
@@ -27,10 +26,6 @@ class ButterflyCalendar constructor(
     private var rvDate: RecyclerView
     private var onDateClickListener: OnDateClickListener? = null
     private var onMonthChangeListener: OnMonthChangeListener? = null
-
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-    }
 
     init {
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.LynnCustomizeCalendar, 0, 0)
@@ -55,6 +50,8 @@ class ButterflyCalendar constructor(
         btnPrevious.setOnClickListener {
             onPrevious()
         }
+
+        initIndicators(context, attrs)
     }
 
     private fun onPrevious() {
@@ -152,11 +149,11 @@ class ButterflyCalendar constructor(
         calendarAdapter.setMultipleOffDay(offDayList)
     }
 
-    fun setSuperSundayOff(){
+    fun setSuperSundayOff() {
         calendarAdapter.setSuperSundayOff()
     }
 
-    fun setWeekendOff(){
+    fun setWeekendOff() {
         calendarAdapter.setWeekendOff()
     }
 
@@ -173,6 +170,45 @@ class ButterflyCalendar constructor(
     override fun onLongClick(date: Date) {
         if (onDateClickListener != null) {
             onDateClickListener!!.onClick(date)
+        }
+    }
+
+    private fun initIndicators(context: Context, attrs: AttributeSet) {
+
+        /**
+         * Get TypedArray holding the attribute values in set that are listed in attrs.
+         * Default style specified by defStyleAttr and defStyleRes
+         * defStyleAttr contains a reference to a style resource that supplies defaults values for attributes
+         * defStyleRes is resource identifier of a style resource that supplies default values for the attributes,
+         * used only if defStyleAttr is 0 or can not be found in the theme. Can be 0 to not look for defaults.
+         */
+        val typedArray =
+            context.theme.obtainStyledAttributes(attrs, R.styleable.LynnCustomizeCalendar, 0, 0)
+
+        try {
+            if (typedArray.getBoolean(R.styleable.LynnCustomizeCalendar_superSundayOff, false)) {
+                calendarAdapter.setSuperSundayOff()
+            }
+
+            if (typedArray.getBoolean(R.styleable.LynnCustomizeCalendar_weekendOff, false)) {
+                calendarAdapter.setWeekendOff()
+            }
+
+            btnPrevious.setImageResource(
+                typedArray.getResourceId(
+                    R.styleable.LynnCustomizeCalendar_previousIcon,
+                    R.drawable.ic_previous
+                )
+            )
+
+            btnNext.setImageResource(
+                typedArray.getResourceId(
+                    R.styleable.LynnCustomizeCalendar_nextIcon,
+                    R.drawable.ic_next
+                )
+            )
+        } finally {
+            typedArray.recycle()
         }
     }
 }
