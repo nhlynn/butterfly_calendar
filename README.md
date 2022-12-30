@@ -30,10 +30,15 @@ You can use following function
 -multiple off day
 
 
-    <com.nylynn.butterfly_calendar.ButterflyCalendar
+<com.nylynn.dynamic_calendar.LynnCustomizeCalendar
         android:id="@+id/my_calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:weekendOff="true" //default is false
+        app:superSundayOff="true" //default is false
+        app:previousIcon="@drawable/ic_previous" 
+        app:nextIcon="@drawable/ic_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
