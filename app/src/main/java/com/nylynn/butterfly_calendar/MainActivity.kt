@@ -2,7 +2,9 @@ package com.nylynn.butterfly_calendar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.nylynn.butterfly_calendar.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
@@ -12,6 +14,24 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.lynnCal.setWeekendOff()
+        binding.lynnCal.setSuperSundayOff()
+
+        binding.lynnCal.setOnDateClickListener(object : OnDateClickListener{
+            override fun onClick(date: Date) {
+                Toast.makeText(this@MainActivity,"$date",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onLongClick(date: Date) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        binding.lynnCal.setOnMonthChangeListener(object : OnMonthChangeListener{
+            override fun onMonthChange(date: String) {
+                Toast.makeText(this@MainActivity,date,Toast.LENGTH_LONG).show()
+            }
+
+        })
     }
 }

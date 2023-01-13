@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,8 @@ class ButterflyCalendar constructor(
     private var mainCalendar: Calendar = Calendar.getInstance()
     private lateinit var calendarAdapter: CalendarAdapter
     private var tvYearMonth: MaterialTextView
+    private var lblSun:MaterialTextView
+    private var lblSat:MaterialTextView
     private var btnNext: AppCompatImageButton
     private var btnPrevious: AppCompatImageButton
     private var rvDate: RecyclerView
@@ -36,6 +39,8 @@ class ButterflyCalendar constructor(
         val rootView: View = inflater.inflate(R.layout.butterfly_calendar, this, true)
 
         tvYearMonth = rootView.findViewById(R.id.tv_year_month)
+        lblSun = rootView.findViewById(R.id.lbl_sun)
+        lblSat = rootView.findViewById(R.id.lbl_sat)
         btnNext = rootView.findViewById(R.id.btn_next)
         btnPrevious = rootView.findViewById(R.id.btn_previous)
         rvDate = rootView.findViewById(R.id.rv_date)
@@ -150,10 +155,31 @@ class ButterflyCalendar constructor(
     }
 
     fun setSuperSundayOff() {
-        calendarAdapter.setSuperSundayOff()
+        sundayOff()
     }
 
     fun setWeekendOff() {
+        weekendOff()
+    }
+
+    private fun sundayOff() {
+        lblSun.setTextColor(AppCompatResources.getColorStateList(
+            lblSun.context,
+            R.color.red
+        ))
+        calendarAdapter.setSuperSundayOff()
+    }
+
+    private fun weekendOff() {
+        lblSun.setTextColor(AppCompatResources.getColorStateList(
+            lblSun.context,
+            R.color.red
+        ))
+
+        lblSat.setTextColor(AppCompatResources.getColorStateList(
+            lblSat.context,
+            R.color.red
+        ))
         calendarAdapter.setWeekendOff()
     }
 
@@ -187,11 +213,11 @@ class ButterflyCalendar constructor(
 
         try {
             if (typedArray.getBoolean(R.styleable.LynnCustomizeCalendar_superSundayOff, false)) {
-                calendarAdapter.setSuperSundayOff()
+                sundayOff()
             }
 
             if (typedArray.getBoolean(R.styleable.LynnCustomizeCalendar_weekendOff, false)) {
-                calendarAdapter.setWeekendOff()
+                weekendOff()
             }
 
             btnPrevious.setImageResource(

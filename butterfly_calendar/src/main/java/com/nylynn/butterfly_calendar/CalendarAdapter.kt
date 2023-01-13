@@ -12,13 +12,14 @@ import com.nylynn.butterfly_calendar.databinding.CalendarCellBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var onDateClickListener=dateClickListener
+class CalendarAdapter(dateClickListener: OnDateClickListener) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var onDateClickListener = dateClickListener
     private var dateList = arrayListOf<DatesVO>()
     private var eventList = arrayListOf<EventVO>()
     private var offDayList = arrayListOf<Date>()
-    private var mSuperSunday=false
-    private var mWeekend=false
+    private var mSuperSunday = false
+    private var mWeekend = false
 
     private val c: Calendar = Calendar.getInstance()
     private val todayDate: Date = c.time
@@ -44,7 +45,9 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Ada
             if (dateList[position].date == null) "" else dateFormat.format(dateList[position].date!!)
 
         root.mainCell.setOnClickListener {
-            onDateClickListener.onClick(dateList[position].date!!)
+            if (dateList[position].date != null) {
+                onDateClickListener.onClick(dateList[position].date!!)
+            }
         }
 
         if (dateList[position].date != null) {
@@ -96,7 +99,8 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Ada
 
             for (offDay in offDayList) {
                 if (CalendarConstants.ymdFormatter.format(offDay) ==
-                    CalendarConstants.ymdFormatter.format(dateList[position].date!!)) {
+                    CalendarConstants.ymdFormatter.format(dateList[position].date!!)
+                ) {
                     root.tvMonthDate.setTextColor(
                         AppCompatResources.getColorStateList(
                             root.tvMonthDate.context,
@@ -128,11 +132,11 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) : RecyclerView.Ada
         this.offDayList = event
     }
 
-    fun setSuperSundayOff(){
-        this.mSuperSunday=true
+    fun setSuperSundayOff() {
+        this.mSuperSunday = true
     }
 
-    fun setWeekendOff(){
-        this.mWeekend=true
+    fun setWeekendOff() {
+        this.mWeekend = true
     }
 }
