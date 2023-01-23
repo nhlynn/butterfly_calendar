@@ -50,6 +50,13 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
             }
         }
 
+        root.mainCell.setOnLongClickListener {
+            if (dateList[position].date != null) {
+                onDateClickListener.onLongClick(dateList[position].date!!)
+            }
+            true
+        }
+
         if (dateList[position].date != null) {
             if (mWeekend && (dayOfWeekFormat.format(dateList[position].date!!) == "Saturday" ||
                         dayOfWeekFormat.format(dateList[position].date!!) == "Sunday")

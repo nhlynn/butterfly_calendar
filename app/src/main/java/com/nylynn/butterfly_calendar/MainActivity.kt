@@ -2,6 +2,7 @@ package com.nylynn.butterfly_calendar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.nylynn.butterfly_calendar.databinding.ActivityMainBinding
 import java.util.*
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onLongClick(date: Date) {
-                TODO("Not yet implemented")
+                Log.d("LogData","$date")
             }
 
         })

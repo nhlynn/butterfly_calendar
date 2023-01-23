@@ -195,7 +195,7 @@ class ButterflyCalendar constructor(
 
     override fun onLongClick(date: Date) {
         if (onDateClickListener != null) {
-            onDateClickListener!!.onClick(date)
+            onDateClickListener!!.onLongClick(date)
         }
     }
 
