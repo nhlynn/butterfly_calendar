@@ -17,7 +17,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.nhlynn:butterfly_calendar:1.1.4'
+	        implementation 'com.github.nhlynn:butterfly_calendar:1.1.5'
 	}
 
 
@@ -47,12 +47,12 @@ You can use following function
 //Date Click Listener
 
         binding.myCalendar.setOnDateClickListener(object : OnDateClickListener{
-            override fun onClick(date: Date) {
-                Toast.makeText(this@MainActivity,CalendarConstants.ymdFormatter.format(date), Toast.LENGTH_LONG).show()
+            override fun onClick(date: String) {
+                Toast.makeText(this@MainActivity,date, Toast.LENGTH_LONG).show()
             }
 
-            override fun onLongClick(date: Date) {
-                Toast.makeText(this@MainActivity,CalendarConstants.ymdFormatter.format(date),Toast.LENGTH_LONG).show()
+            override fun onLongClick(date: String) {
+                Toast.makeText(this@MainActivity,date,Toast.LENGTH_LONG).show()
             }
 
         })
@@ -70,26 +70,22 @@ You can use following function
 
 //multiple off day
 
-        val offDayList= arrayListOf<Date>()
-        for(value in 26..30) {
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.DAY_OF_MONTH, value)
-            offDayList.add(cal.time)
-        }
+        val offDayList= arrayListOf<String>()
+        offDayList.add("2022-02-13")
+	offDayList.add("2022-02-14")
+	offDayList.add("2022-02-15")
         binding.myCalendar.setMultipleOffDay(offDayList)
 
 	
 //single off day
 	
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.DAY_OF_MONTH, 12)
-            binding.myCalendar.addSingleOffDay(cal.time)
+            binding.myCalendar.addSingleOffDay("2023-02-17")
 	
 	
 
 //add event
 
-  binding.myCalendar.addEventWithIcon(calendar.time,R.drawable.ic_travel)
+  binding.myCalendar.addEventWithIcon("2023-02-19",R.drawable.ic_travel)
 	
 	
 	
