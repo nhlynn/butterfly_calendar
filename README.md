@@ -93,4 +93,15 @@ You can use following function
 	
 	
 	
-	
+//To get calendar month
+
+        binding.myCalendar.getCalendarMonth()
+        
+
+//To refresh calendar
+
+
+        binding.btnRefresh.setOnClickListener {
+            binding.myCalendar.setOnRefreshCalendar()
+        }
+
