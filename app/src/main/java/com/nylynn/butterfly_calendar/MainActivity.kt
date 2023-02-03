@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
         binding.lynnCal.setSuperSundayOff()
 
         binding.lynnCal.setOnDateClickListener(object : OnDateClickListener{
-            override fun onClick(date: Date) {
+            override fun onClick(date: String) {
                 Toast.makeText(this@MainActivity,"$date",Toast.LENGTH_LONG).show()
             }
 
-            override fun onLongClick(date: Date) {
+            override fun onLongClick(date: String) {
                 Log.d("LogData","$date")
             }
 
@@ -34,5 +34,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+
+        binding.lynnCal.addEventWithIcon("2023-02-03",R.drawable.ic_normal)
+        binding.lynnCal.addEventWithIcon("2023-02-04",R.drawable.ic_normal)
+
+        val offList= arrayListOf("2023-02-14","2023-02-15","2023-02-16")
+        binding.lynnCal.setMultipleOffDay(offList)
+
+        binding.lynnCal.addSingleOffDay("2023-02-13")
     }
 }

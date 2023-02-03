@@ -153,15 +153,15 @@ class ButterflyCalendar constructor(
         onMonthChangeListener = monthChangeListener
     }
 
-    fun addEventWithIcon(date: Date, icon: Int) {
-        calendarAdapter.addEvent(EventVO(ymdFormatter.format(date), icon))
+    fun addEventWithIcon(date: String, icon: Int) {
+        calendarAdapter.addEvent(EventVO(date, icon))
     }
 
-    fun addSingleOffDay(date: Date) {
+    fun addSingleOffDay(date: String) {
         calendarAdapter.setSingleOffDay(date)
     }
 
-    fun setMultipleOffDay(offDayList: ArrayList<Date>) {
+    fun setMultipleOffDay(offDayList: ArrayList<String>) {
         calendarAdapter.setMultipleOffDay(offDayList)
     }
 
@@ -198,13 +198,13 @@ class ButterflyCalendar constructor(
         this.onDateClickListener = onDateClickListener
     }
 
-    override fun onClick(date: Date) {
+    override fun onClick(date: String) {
         if (onDateClickListener != null) {
             onDateClickListener!!.onClick(date)
         }
     }
 
-    override fun onLongClick(date: Date) {
+    override fun onLongClick(date: String) {
         if (onDateClickListener != null) {
             onDateClickListener!!.onLongClick(date)
         }

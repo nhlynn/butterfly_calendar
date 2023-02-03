@@ -8,6 +8,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.nylynn.butterfly_calendar.CalendarConstants.dateFormat
 import com.nylynn.butterfly_calendar.CalendarConstants.dayOfWeekFormat
+import com.nylynn.butterfly_calendar.CalendarConstants.ymdFormatter
 import com.nylynn.butterfly_calendar.databinding.CalendarCellBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -17,7 +18,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
     private var onDateClickListener = dateClickListener
     private var dateList = arrayListOf<DatesVO>()
     private var eventList = arrayListOf<EventVO>()
-    private var offDayList = arrayListOf<Date>()
+    private var offDayList = arrayListOf<String>()
     private var mSuperSunday = false
     private var mWeekend = false
 
@@ -46,13 +47,13 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
 
         root.mainCell.setOnClickListener {
             if (dateList[position].date != null) {
-                onDateClickListener.onClick(dateList[position].date!!)
+                onDateClickListener.onClick(ymdFormatter.format(dateList[position].date!!))
             }
         }
 
         root.mainCell.setOnLongClickListener {
             if (dateList[position].date != null) {
-                onDateClickListener.onLongClick(dateList[position].date!!)
+                onDateClickListener.onLongClick(ymdFormatter.format(dateList[position].date!!))
             }
             true
         }
@@ -105,7 +106,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
             }
 
             for (offDay in offDayList) {
-                if (CalendarConstants.ymdFormatter.format(offDay) ==
+                if (offDay ==
                     CalendarConstants.ymdFormatter.format(dateList[position].date!!)
                 ) {
                     root.tvMonthDate.setTextColor(
@@ -131,11 +132,11 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
         this.eventList.add(event)
     }
 
-    fun setSingleOffDay(event: Date) {
+    fun setSingleOffDay(event: String) {
         this.offDayList.add(event)
     }
 
-    fun setMultipleOffDay(event: ArrayList<Date>) {
+    fun setMultipleOffDay(event: ArrayList<String>) {
         this.offDayList = event
     }
 
