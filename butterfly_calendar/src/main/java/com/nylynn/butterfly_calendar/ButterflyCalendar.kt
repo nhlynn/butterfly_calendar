@@ -138,6 +138,17 @@ class ButterflyCalendar constructor(
         return mainCalendar.get(Calendar.DAY_OF_WEEK) - 1
     }
 
+    fun setOnRefreshCalendar() {
+        mainCalendar = Calendar.getInstance()
+        setDate()
+    }
+
+    fun getCalendarMonth(): String {
+        return ymdFormatter.format(
+            mainCalendar.time
+        )
+    }
+
     fun setOnMonthChangeListener(monthChangeListener: OnMonthChangeListener) {
         onMonthChangeListener = monthChangeListener
     }
