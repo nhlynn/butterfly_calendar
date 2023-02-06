@@ -39,7 +39,7 @@ class ButterflyCalendar constructor(
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val rootView: View = inflater.inflate(R.layout.butterfly_calendar, this, true)
 
-        tvYearMonth = rootView.findViewById(R.id.tv_year_month)
+        tvYearMonth = rootView.findViewById(R.id.tv_header_date)
         lblSun = rootView.findViewById(R.id.lbl_sun)
         lblSat = rootView.findViewById(R.id.lbl_sat)
         btnNext = rootView.findViewById(R.id.btn_next)
