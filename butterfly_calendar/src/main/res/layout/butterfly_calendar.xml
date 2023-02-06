@@ -8,11 +8,12 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginStart="28dp"
-        android:background="?attr/selectableItemBackground"
+        android:layout_marginStart="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="4dp"
         android:src="@drawable/ic_previous"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,20 +36,22 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="28dp"
-        android:background="?attr/selectableItemBackground"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="4dp"
         android:src="@drawable/ic_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_sun"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/sun"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/lbl_mon"
@@ -57,9 +60,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_mon"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/mon"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/lbl_tue"
@@ -68,9 +72,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_tue"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/tue"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/lbl_wed"
@@ -79,9 +84,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_wed"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/wed"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/lbl_thu"
@@ -90,9 +96,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_thu"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/thu"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/lbl_fri"
@@ -101,9 +108,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_fri"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/fri"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/lbl_sat"
@@ -112,9 +120,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_sat"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/sat"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,8 +134,6 @@
         android:id="@+id/rv_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

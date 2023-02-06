@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="LynnCustomizeCalendar" >
-        <attr name="weekendOff" format="boolean"/>
-        <attr name="superSundayOff" format="boolean"/>
-        <attr name="previousIcon" format="reference"/>
-        <attr name="nextIcon" format="reference"/>
+    <declare-styleable name="LynnCustomizeCalendar">
+        <attr name="weekendOff" format="boolean" />
+        <attr name="superSundayOff" format="boolean" />
+        <attr name="previousIcon" format="reference" />
+        <attr name="nextIcon" format="reference" />
+        <attr name="clearHistoryOnMonthChange" format="boolean" />
     </declare-styleable>
 </resources>

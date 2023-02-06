@@ -4,33 +4,41 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.nylynn.butterfly_calendar.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
+    private lateinit var mDataViewModel: DataViewModel
+    private val ymdFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+    private val monthFormatter = SimpleDateFormat("MM", Locale.US)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        mDataViewModel=ViewModelProvider(this)[DataViewModel::class.java]
+        mDataViewModel.getOffDate(monthFormatter.format(ymdFormatter.parse(binding.lynnCal.getCalendarMonth())!!))
+
         binding.lynnCal.setSuperSundayOff()
 
         binding.lynnCal.setOnDateClickListener(object : OnDateClickListener{
             override fun onClick(date: String) {
-                Toast.makeText(this@MainActivity,"$date",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity,date,Toast.LENGTH_LONG).show()
             }
 
             override fun onLongClick(date: String) {
-                Log.d("LogData","$date")
+                Log.d("LogData",date)
             }
 
         })
 
         binding.lynnCal.setOnMonthChangeListener(object : OnMonthChangeListener{
             override fun onMonthChange(date: String) {
-                Toast.makeText(this@MainActivity,date,Toast.LENGTH_LONG).show()
+                mDataViewModel.getOffDate(monthFormatter.format(ymdFormatter.parse(binding.lynnCal.getCalendarMonth())!!))
             }
 
         })
@@ -39,9 +47,9 @@ class MainActivity : AppCompatActivity() {
         binding.lynnCal.addEventWithIcon("2023-02-03",R.drawable.ic_normal)
         binding.lynnCal.addEventWithIcon("2023-02-04",R.drawable.ic_normal)
 
-        val offList= arrayListOf("2023-02-14","2023-02-15","2023-02-16")
-        binding.lynnCal.setMultipleOffDay(offList)
+        mDataViewModel.mDateResponse.observe(this){
+            binding.lynnCal.setMultipleOffDay(it)
+        }
 
-        binding.lynnCal.addSingleOffDay("2023-02-13")
     }
 }

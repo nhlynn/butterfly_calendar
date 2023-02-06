@@ -78,8 +78,8 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
                     )
                 )
             } else {
-                if (CalendarConstants.ymdFormatter.format(todayDate) ==
-                    CalendarConstants.ymdFormatter.format(dateList[position].date!!)
+                if (ymdFormatter.format(todayDate) ==
+                    ymdFormatter.format(dateList[position].date!!)
                 ) {
                     root.tvMonthDate.setTextColor(
                         AppCompatResources.getColorStateList(
@@ -99,7 +99,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
             }
 
             for (event in eventList) {
-                if (event.strDate == CalendarConstants.ymdFormatter.format(dateList[position].date!!)) {
+                if (event.strDate == ymdFormatter.format(dateList[position].date!!)) {
                     root.ivIcon.visibility = View.VISIBLE
                     root.ivIcon.setImageResource(event.image)
                 }
@@ -107,7 +107,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
 
             for (offDay in offDayList) {
                 if (offDay ==
-                    CalendarConstants.ymdFormatter.format(dateList[position].date!!)
+                    ymdFormatter.format(dateList[position].date!!)
                 ) {
                     root.tvMonthDate.setTextColor(
                         AppCompatResources.getColorStateList(
@@ -128,23 +128,40 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearCalendar(){
+        this.eventList.clear()
+        this.offDayList.clear()
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     fun addEvent(event: EventVO) {
         this.eventList.add(event)
+        notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setSingleOffDay(event: String) {
         this.offDayList.add(event)
+        notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setMultipleOffDay(event: ArrayList<String>) {
         this.offDayList = event
+        notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setSuperSundayOff() {
         this.mSuperSunday = true
+        notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setWeekendOff() {
         this.mWeekend = true
+        notifyDataSetChanged()
     }
 }
