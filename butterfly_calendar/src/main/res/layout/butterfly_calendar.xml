@@ -47,10 +47,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_sun"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/sun"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -61,10 +60,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_mon"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/mon"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -75,10 +73,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_tue"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/tue"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -89,10 +86,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_wed"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/wed"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -103,10 +99,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_thu"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/thu"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -117,10 +112,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_fri"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/fri"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -131,10 +125,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/lbl_sat"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/sat"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -145,8 +138,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_date"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

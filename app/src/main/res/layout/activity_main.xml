@@ -10,11 +10,11 @@
         android:id="@+id/lynn_cal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:clearHistoryOnMonthChange="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:clearHistoryOnMonthChange="true"
         app:weekendOff="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
