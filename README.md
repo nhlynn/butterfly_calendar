@@ -17,7 +17,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.nhlynn:butterfly_calendar:1.1.5'
+	        implementation 'com.github.nhlynn:butterfly_calendar:1.1.6'
 	}
 
 
@@ -29,22 +29,29 @@ You can use following function
 
 -multiple off day
 
+Usage ::
+
+1.Add Calendar to your layout
 
     <com.nylynn.dynamic_calendar.LynnCustomizeCalendar
         android:id="@+id/my_calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:weekendOff="true" //default is false
-        app:superSundayOff="true" //default is false
-        app:previousIcon="@drawable/ic_previous"
-        app:nextIcon="@drawable/ic_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+2.You can use layout attributes
 
-//Date Click Listener
+    app:clearHistoryOnMonthChange="true" // default is false if you want to clear on month change event and day off history
+    app:nextIcon="@drawable/ic_next" // you can change next button icon
+    app:previousIcon="@drawable/ic_previous" // you can change previous button icon
+    app:superSundayOff="true" // default is false
+    app:weekendOff="true" // default is false
+
+
+3.Date Click Listener
 
         binding.myCalendar.setOnDateClickListener(object : OnDateClickListener{
             override fun onClick(date: String) {
@@ -58,46 +65,56 @@ You can use following function
         })
 
 
-//Month Change Listener
+4.Month Change Listener
 
- binding.myCalendar.setOnMonthChangeListener(object : OnMonthChangeListener{
+       binding.myCalendar.setOnMonthChangeListener(object : OnMonthChangeListener{
             override fun onMonthChange(date: String) {
                 Toast.makeText(this@MainActivity,date,Toast.LENGTH_LONG).show()
             }
+	})
 
-        })
 
-
-//multiple off day
+5.If you want to set multiple off day
 
         val offDayList= arrayListOf<String>()
         offDayList.add("2022-02-13")
-	offDayList.add("2022-02-14")
-	offDayList.add("2022-02-15")
+        offDayList.add("2022-02-14")
+        offDayList.add("2022-02-15")
         binding.myCalendar.setMultipleOffDay(offDayList)
-
 	
-//single off day
+6.If you want to set single off day
 	
             binding.myCalendar.addSingleOffDay("2023-02-17")
 	
 	
 
-//add event
+7.If you want to add event
 
-  binding.myCalendar.addEventWithIcon("2023-02-19",R.drawable.ic_travel)
-	
-	
-	
-//To get calendar month
+        binding.myCalendar.addEventWithIcon("2023-02-19",R.drawable.ic_travel)
+        
+
+8.To get calendar month
 
         binding.myCalendar.getCalendarMonth()
         
 
-//To refresh calendar
-
+9.To refresh calendar
 
         binding.btnRefresh.setOnClickListener {
             binding.myCalendar.setOnRefreshCalendar()
         }
+
+10. To change next button icon
+        
+        binding.lynnCal.setNextIcon(R.drawable.ic_next)
+
+
+11. To change previous button icon
+
+        binding.lynnCal.setPreviousIcon(R.drawable.ic_previous)
+
+12. If you want to clear on month change event and day off history
+
+        binding.lynnCal.setClearHistoryOnMonthChange(true)
+
 
