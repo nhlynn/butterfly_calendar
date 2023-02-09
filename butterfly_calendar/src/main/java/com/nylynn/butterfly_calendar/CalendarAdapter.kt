@@ -94,8 +94,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
 
             for (event in eventList) {
                 if (event.strDate == ymdFormatter.format(dateList[position].date)) {
-                    root.ivIcon.visibility = View.VISIBLE
-                    root.ivIcon.setImageResource(event.image)
+                    root.ivEvent.setImageResource(event.image)
                 }
             }
 
@@ -109,8 +108,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
                             R.color.red
                         )
                     )
-                    root.ivIcon.visibility = View.VISIBLE
-                    root.ivIcon.setImageResource(R.drawable.ic_calendar)
+                    root.ivEvent.setImageResource(R.drawable.ic_calendar)
                 }
             }
         }else{

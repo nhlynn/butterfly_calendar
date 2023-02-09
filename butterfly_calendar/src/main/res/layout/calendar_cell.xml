@@ -23,7 +23,7 @@
         tools:text="01" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_icon"
+        android:id="@+id/iv_event"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:contentDescription="@string/sat"
