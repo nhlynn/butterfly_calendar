@@ -5,21 +5,19 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
-import com.nylynn.butterfly_calendar.CalendarConstants.myShowFormatter
-import com.nylynn.butterfly_calendar.CalendarConstants.ymdFormatter
 import java.util.*
 
 class ButterflyCalendar constructor(
     context: Context,
     attrs: AttributeSet
 ) : LinearLayout(context, attrs), OnDateClickListener {
-    private var mainCalendar: Calendar = Calendar.getInstance()
     private lateinit var calendarAdapter: CalendarAdapter
     private var tvYearMonth: MaterialTextView
     private var lblSun: MaterialTextView
@@ -39,6 +37,7 @@ class ButterflyCalendar constructor(
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val rootView: View = inflater.inflate(R.layout.butterfly_calendar, this, true)
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         tvYearMonth = rootView.findViewById(R.id.tv_header_date)
         lblSun = rootView.findViewById(R.id.lbl_sun)
         lblSat = rootView.findViewById(R.id.lbl_sat)
@@ -104,45 +103,23 @@ class ButterflyCalendar constructor(
     }
 
     private fun daysInMonthArray(): ArrayList<DatesVO> {
-        val daysInMonthArray: ArrayList<DatesVO> = ArrayList()
-        val daysInMonth: Int = getDayInMonth()
-        val dayOfWeek: Int = getDayOfWeek()
+        val dateModelList: ArrayList<DatesVO> = ArrayList()
+        // set date start of month
+        val calendar = Calendar.getInstance()
+        calendar.time = mainCalendar.time
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
 
-        for (i in 1..42) {
-            if (i <= dayOfWeek || i > daysInMonth + dayOfWeek) {
-                if (dayOfWeek < 7) {
-                    daysInMonthArray.add(DatesVO(null))
-                }
-            } else {
-                val calendar = Calendar.getInstance()
-                calendar.set(Calendar.YEAR, mainCalendar.get(Calendar.YEAR))
-                calendar.set(Calendar.MONTH, mainCalendar.get(Calendar.MONTH))
-                calendar.set(Calendar.DAY_OF_MONTH, (i - dayOfWeek))
-                daysInMonthArray.add(DatesVO(calendar.time))
-            }
+        val monthBeginningCell: Int = calendar.get(Calendar.DAY_OF_WEEK) - 1
+        calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell)
+        dateModelList.clear()
+
+        while (dateModelList.size < 42) {
+            val model = DatesVO(calendar.time)
+            dateModelList.add(model)
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
-        return daysInMonthArray
-    }
 
-    private fun getDayInMonth(): Int {
-        val year = mainCalendar.get(Calendar.YEAR)
-        val month = mainCalendar.get(Calendar.MONTH) + 1
-        return if (month == 4 || month == 6 || month == 9 || month == 11) {
-            30
-        } else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-            31
-        } else {
-            if (year % 4 == 0) {
-                29
-            } else {
-                28
-            }
-        }
-    }
-
-    private fun getDayOfWeek(): Int {
-        mainCalendar.set(Calendar.DAY_OF_MONTH, 1)
-        return mainCalendar.get(Calendar.DAY_OF_WEEK) - 1
+        return dateModelList
     }
 
     private fun sundayOff() {

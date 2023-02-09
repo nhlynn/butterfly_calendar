@@ -38,16 +38,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.lynnCal.setOnMonthChangeListener(object : OnMonthChangeListener{
             override fun onMonthChange(date: String) {
-                mDataViewModel.getOffDate(monthFormatter.format(ymdFormatter.parse(binding.lynnCal.getCalendarMonth())!!))
+
+                val month = monthFormatter.format(ymdFormatter.parse(binding.lynnCal.getCalendarMonth())!!)
+                mDataViewModel.getOffDate(month)
+
+                binding.lynnCal.addEventWithIcon("2023-$month-03",R.drawable.ic_normal)
+                binding.lynnCal.addEventWithIcon("2023-$month-04",R.drawable.ic_next)
+                binding.lynnCal.addEventWithIcon("2023-$month-05",R.drawable.ic_previous)
+                binding.lynnCal.addEventWithIcon("2023-$month-06",R.drawable.ic_normal)
             }
 
         })
 
-
-        binding.lynnCal.addEventWithIcon("2023-02-03",R.drawable.ic_normal)
-        binding.lynnCal.addEventWithIcon("2023-02-04",R.drawable.ic_normal)
-
-        mDataViewModel.mDateResponse.observe(this){
+        mDataViewModel.mOffDateResponse.observe(this){
             binding.lynnCal.setMultipleOffDay(it)
         }
 

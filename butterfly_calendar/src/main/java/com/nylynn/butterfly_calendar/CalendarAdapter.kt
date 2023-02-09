@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.nylynn.butterfly_calendar.CalendarConstants.dateFormat
-import com.nylynn.butterfly_calendar.CalendarConstants.dayOfWeekFormat
-import com.nylynn.butterfly_calendar.CalendarConstants.ymdFormatter
 import com.nylynn.butterfly_calendar.databinding.CalendarCellBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -43,24 +40,20 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
         val root = viewHolder.viewBinder
 
         root.tvMonthDate.text =
-            if (dateList[position].date == null) "" else dateFormat.format(dateList[position].date!!)
+            dateFormat.format(dateList[position].date)
 
         root.mainCell.setOnClickListener {
-            if (dateList[position].date != null) {
-                onDateClickListener.onClick(ymdFormatter.format(dateList[position].date!!))
-            }
+            onDateClickListener.onClick(ymdFormatter.format(dateList[position].date))
         }
 
         root.mainCell.setOnLongClickListener {
-            if (dateList[position].date != null) {
-                onDateClickListener.onLongClick(ymdFormatter.format(dateList[position].date!!))
-            }
+            onDateClickListener.onLongClick(ymdFormatter.format(dateList[position].date))
             true
         }
 
-        if (dateList[position].date != null) {
-            if (mWeekend && (dayOfWeekFormat.format(dateList[position].date!!) == "Saturday" ||
-                        dayOfWeekFormat.format(dateList[position].date!!) == "Sunday")
+        if (ymFormatter.format(dateList[position].date) == ymFormatter.format(mainCalendar.time)) {
+            if (mWeekend && (dayOfWeekFormat.format(dateList[position].date) == "Saturday" ||
+                        dayOfWeekFormat.format(dateList[position].date) == "Sunday")
             ) {
                 root.tvMonthDate.setTextColor(
                     AppCompatResources.getColorStateList(
@@ -69,7 +62,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
                     )
                 )
             } else if (mSuperSunday &&
-                dayOfWeekFormat.format(dateList[position].date!!) == "Sunday"
+                dayOfWeekFormat.format(dateList[position].date) == "Sunday"
             ) {
                 root.tvMonthDate.setTextColor(
                     AppCompatResources.getColorStateList(
@@ -79,7 +72,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
                 )
             } else {
                 if (ymdFormatter.format(todayDate) ==
-                    ymdFormatter.format(dateList[position].date!!)
+                    ymdFormatter.format(dateList[position].date)
                 ) {
                     root.tvMonthDate.setTextColor(
                         AppCompatResources.getColorStateList(
@@ -95,11 +88,12 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
                             R.color.grey
                         )
                     )
+                    root.tvMonthDate.textSize = 14f
                 }
             }
 
             for (event in eventList) {
-                if (event.strDate == ymdFormatter.format(dateList[position].date!!)) {
+                if (event.strDate == ymdFormatter.format(dateList[position].date)) {
                     root.ivIcon.visibility = View.VISIBLE
                     root.ivIcon.setImageResource(event.image)
                 }
@@ -107,7 +101,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
 
             for (offDay in offDayList) {
                 if (offDay ==
-                    ymdFormatter.format(dateList[position].date!!)
+                    ymdFormatter.format(dateList[position].date)
                 ) {
                     root.tvMonthDate.setTextColor(
                         AppCompatResources.getColorStateList(
@@ -119,6 +113,35 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
                     root.ivIcon.setImageResource(R.drawable.ic_calendar)
                 }
             }
+        }else{
+            root.tvMonthDate.setTextColor(
+                AppCompatResources.getColorStateList(
+                    root.tvMonthDate.context,
+                    R.color.black_disable
+                )
+            )
+            root.tvMonthDate.textSize = 14f
+
+            if (this.mWeekend &&
+                (dayOfWeekFormat.format(dateList[position].date) == "Saturday" ||
+                        dayOfWeekFormat.format(dateList[position].date) == "Sunday")) {
+                root.tvMonthDate.setTextColor(
+                    AppCompatResources.getColorStateList(
+                        root.tvMonthDate.context,
+                        R.color.red_disable
+                    )
+                )
+            }
+
+            if (this.mSuperSunday &&
+                dayOfWeekFormat.format(dateList[position].date) == "Sunday") {
+                root.tvMonthDate.setTextColor(
+                    AppCompatResources.getColorStateList(
+                        root.tvMonthDate.context,
+                        R.color.red_disable
+                    )
+                )
+            }
         }
     }
 
@@ -129,7 +152,7 @@ class CalendarAdapter(dateClickListener: OnDateClickListener) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun clearCalendar(){
+    fun clearCalendar() {
         this.eventList.clear()
         this.offDayList.clear()
         notifyDataSetChanged()
