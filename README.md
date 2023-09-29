@@ -1,4 +1,11 @@
 # butterfly_calendar
+
+<div>
+	<img src="https://github.com/nhlynn/butterfly_calendar/assets/57884748/89f833b9-4ef7-4a8a-8b80-0101890fe23c" width=15% height=20%/>
+	<img src="https://github.com/nhlynn/butterfly_calendar/assets/57884748/54ce7378-e7ac-455f-9205-4704dc5eb006" width=15% height=20%/>
+</div>
+
+
 customize calendar
 
 To get a butterfly calendar into your build:
