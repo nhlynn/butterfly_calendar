@@ -94,10 +94,12 @@ class ButterflyCalendar constructor(
         calendarAdapter.setData(daysInMonthArray())
 
         if (onMonthChangeListener != null) {
-            onMonthChangeListener!!.onMonthChange(
-                ymdFormatter.format(
+            onMonthChangeListener?.onMonthChange(
+                monthFormatter.format(
                     mainCalendar.time
-                )
+                ),
+                getStartDate(),
+                getEndDate()
             )
         }
     }
@@ -261,4 +263,22 @@ class ButterflyCalendar constructor(
         onMonthChangeListener = monthChangeListener
     }
 
+    fun getStartDate(): String {
+        val calendar = Calendar.getInstance()
+        calendar.time = mainCalendar.time
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        return ymdFormatter.format(
+            calendar.time
+        )
+    }
+
+    fun getEndDate(): String {
+        val monthLastDate: Int = mainCalendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val calendar = Calendar.getInstance()
+        calendar.time = mainCalendar.time
+        calendar.set(Calendar.DAY_OF_MONTH, monthLastDate)
+        return ymdFormatter.format(
+            calendar.time
+        )
+    }
 }
