@@ -75,8 +75,14 @@ Usage ::
 4.Month Change Listener
 
        binding.myCalendar.setOnMonthChangeListener(object : OnMonthChangeListener{
-            override fun onMonthChange(date: String) {
-                Toast.makeText(this@MainActivity,date,Toast.LENGTH_LONG).show()
+            override fun onMonthChange(currentMonth:String, startDate:String, endDate:String) {
+
+                Log.d("LogData","Monthly Start Date = ${binding.lynnCal.getStartDate()}")
+                Log.d("LogData","Monthly End Date = ${binding.lynnCal.getEndDate()}")
+
+                Log.d("LogData","Monthly Date Listener = $currentMonth")
+                Log.d("LogData","Monthly Start Date Listener = $startDate")
+                Log.d("LogData","Monthly End Date Listener = $endDate")
             }
 	})
 
