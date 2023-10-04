@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_month_date"
+        android:id="@+id/tv_butterfly_month_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -23,12 +23,12 @@
         tools:text="01" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_event"
+        android:id="@+id/iv_butterfly_event"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:contentDescription="@string/sat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_month_date" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_butterfly_month_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

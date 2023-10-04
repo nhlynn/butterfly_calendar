@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_previous"
+        android:id="@+id/btn_butterfly_previous"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_header_date"
+        android:id="@+id/tv_butterfly_header_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -27,14 +27,14 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_next"
-        app:layout_constraintEnd_toStartOf="@+id/btn_next"
-        app:layout_constraintStart_toEndOf="@+id/btn_previous"
-        app:layout_constraintTop_toTopOf="@+id/btn_previous" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_butterfly_next"
+        app:layout_constraintEnd_toStartOf="@+id/btn_butterfly_next"
+        app:layout_constraintStart_toEndOf="@+id/btn_butterfly_previous"
+        app:layout_constraintTop_toTopOf="@+id/btn_butterfly_previous" />
 
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_butterfly_next"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="16dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_sun"
+        android:id="@+id/lbl_butterfly_sun"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -55,12 +55,12 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_mon"
+        app:layout_constraintEnd_toStartOf="@+id/lbl_butterfly_mon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_mon"
+        android:id="@+id/lbl_butterfly_mon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -69,12 +69,12 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_tue"
-        app:layout_constraintStart_toEndOf="@+id/lbl_sun"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintEnd_toStartOf="@+id/lbl_butterfly_tue"
+        app:layout_constraintStart_toEndOf="@+id/lbl_butterfly_sun"
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_tue"
+        android:id="@+id/lbl_butterfly_tue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -83,12 +83,12 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_wed"
-        app:layout_constraintStart_toEndOf="@+id/lbl_mon"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintEnd_toStartOf="@+id/lbl_butterfly_wed"
+        app:layout_constraintStart_toEndOf="@+id/lbl_butterfly_mon"
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_wed"
+        android:id="@+id/lbl_butterfly_wed"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -97,12 +97,12 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_thu"
-        app:layout_constraintStart_toEndOf="@+id/lbl_tue"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintEnd_toStartOf="@+id/lbl_butterfly_thu"
+        app:layout_constraintStart_toEndOf="@+id/lbl_butterfly_tue"
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_thu"
+        android:id="@+id/lbl_butterfly_thu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -111,12 +111,12 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_fri"
-        app:layout_constraintStart_toEndOf="@+id/lbl_wed"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintEnd_toStartOf="@+id/lbl_butterfly_fri"
+        app:layout_constraintStart_toEndOf="@+id/lbl_butterfly_wed"
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_fri"
+        android:id="@+id/lbl_butterfly_fri"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -125,12 +125,12 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/lbl_sat"
-        app:layout_constraintStart_toEndOf="@+id/lbl_thu"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintEnd_toStartOf="@+id/lbl_butterfly_sat"
+        app:layout_constraintStart_toEndOf="@+id/lbl_butterfly_thu"
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lbl_sat"
+        android:id="@+id/lbl_butterfly_sat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -140,11 +140,11 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lbl_fri"
-        app:layout_constraintTop_toBottomOf="@+id/btn_previous" />
+        app:layout_constraintStart_toEndOf="@+id/lbl_butterfly_fri"
+        app:layout_constraintTop_toBottomOf="@+id/btn_butterfly_previous" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_date"
+        android:id="@+id/rv_butterfly_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
@@ -152,6 +152,6 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_sun"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_butterfly_sun"
         tools:listitem="@layout/calendar_cell" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,12 +38,12 @@ class ButterflyCalendar constructor(
         val rootView: View = inflater.inflate(R.layout.butterfly_calendar, this, true)
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        tvYearMonth = rootView.findViewById(R.id.tv_header_date)
-        lblSun = rootView.findViewById(R.id.lbl_sun)
-        lblSat = rootView.findViewById(R.id.lbl_sat)
-        btnNext = rootView.findViewById(R.id.btn_next)
-        btnPrevious = rootView.findViewById(R.id.btn_previous)
-        rvDate = rootView.findViewById(R.id.rv_date)
+        tvYearMonth = rootView.findViewById(R.id.tv_butterfly_header_date)
+        lblSun = rootView.findViewById(R.id.lbl_butterfly_sun)
+        lblSat = rootView.findViewById(R.id.lbl_butterfly_sat)
+        btnNext = rootView.findViewById(R.id.btn_butterfly_next)
+        btnPrevious = rootView.findViewById(R.id.btn_butterfly_previous)
+        rvDate = rootView.findViewById(R.id.rv_butterfly_date)
 
         setMonthView()
         setDate()
