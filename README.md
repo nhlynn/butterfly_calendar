@@ -40,7 +40,7 @@ Usage ::
 
 1.Add Calendar to your layout
 
-    <com.nylynn.dynamic_calendar.LynnCustomizeCalendar
+    <com.nylynn.butterfly_calendar.ButterflyCalendar
         android:id="@+id/my_calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
